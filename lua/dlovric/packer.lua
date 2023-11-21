@@ -28,4 +28,8 @@ return require('packer').startup(function(use)
     {run = ':TSUpdate'}
     )
 
+
+  -- Harpoon for extra file navigation
+  use ('/ThePrimeagen/harpoon')
+
 end)
