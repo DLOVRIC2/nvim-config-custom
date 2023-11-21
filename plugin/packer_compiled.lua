@@ -77,7 +77,7 @@ _G.packer_plugins = {
   harpoon = {
     loaded = true,
     path = "/home/dominic/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com//ThePrimeagen/harpoon"
+    url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -104,6 +104,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dominic/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  undotree = {
+    loaded = true,
+    path = "/home/dominic/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
   }
 }
 
