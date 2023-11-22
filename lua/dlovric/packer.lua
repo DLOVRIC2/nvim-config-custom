@@ -51,6 +51,11 @@ return require('packer').startup(function(use)
     -- Autotag for js,ts,html
     use 'windwp/nvim-ts-autotag'
 
+
+    -- Autopair for brackets
+    use 'windwp/nvim-autopairs'
+
+
 	-- LSP setup
 	use {
 		'VonHeikemen/lsp-zero.nvim',
