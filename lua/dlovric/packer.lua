@@ -40,6 +40,12 @@ return require('packer').startup(function(use)
 	-- Git
 	use 'tpope/vim-fugitive'
 
+    -- FML hahah
+    use 'eandrju/cellular-automaton.nvim'
+
+
+    -- Zen mode
+    use 'folke/zen-mode.nvim' 
 
 
 	-- LSP setup
