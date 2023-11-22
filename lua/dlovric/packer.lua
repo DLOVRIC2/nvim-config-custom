@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
     use 'folke/zen-mode.nvim' 
 
 
+    -- Autotag for js,ts,html
+    use 'windwp/nvim-ts-autotag'
+
 	-- LSP setup
 	use {
 		'VonHeikemen/lsp-zero.nvim',
