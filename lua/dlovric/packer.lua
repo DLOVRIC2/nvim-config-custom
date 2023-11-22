@@ -36,6 +36,13 @@ return require('packer').startup(function(use)
 	-- Undo tree
 	use 'mbbill/undotree'
 
+	
+	-- Git
+	use 'tpope/vim-fugitive'
+
+
+
+	-- LSP setup
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
