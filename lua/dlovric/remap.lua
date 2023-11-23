@@ -1,8 +1,8 @@
 -- Set space as the leader key
 vim.g.mapleader = " "
 
--- Map '<leader>pv' to open the command line window in normal mode
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- Map '<leader>e' to open the command line window in normal mode
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- Move a block of text down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
