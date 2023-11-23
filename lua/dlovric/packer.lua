@@ -55,6 +55,14 @@ return require('packer').startup(function(use)
     -- Autopair for brackets
     use 'windwp/nvim-autopairs'
 
+    -- Comment plugin
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
 
 	-- LSP setup
 	use {
