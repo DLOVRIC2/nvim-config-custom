@@ -65,6 +65,9 @@ return require('packer').startup(function(use)
 
     -- Prettier formatting
     use('MunifTanjim/prettier.nvim')
+    -- Null-ls required for prettier to work. Note since null-ls is archived, this is the same but community
+    -- maintained version.
+    -- use('nvimtools/none-ls.nvim')
 
 	-- LSP setup
 	use {
