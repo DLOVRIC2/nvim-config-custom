@@ -63,6 +63,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Prettier formatting
+    use('MunifTanjim/prettier.nvim')
 
 	-- LSP setup
 	use {
