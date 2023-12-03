@@ -92,4 +92,52 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'},
 		}
 	}
+
+
+    -- DAP setup -- might need to move some of this setup to individual files.
+    use {
+        'rcarriga/nvim-dap-ui',
+        requires = {'mfussenegger/nvim-dap'},
+        config = function()
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+        end
+    }
+
+
+    use {
+        'mfussenegger/nvim-dap',
+        config = function()
+            local dap = require("dap")
+            dap.configurations.python = {
+                {
+                    type = 'python',
+                    request = 'launch',
+                    name = "Launch file",
+                    program = "${file}",
+                    args = {"--no-cov"}
+                },
+            }
+        end
+    }
+
+    use {
+        'mfussenegger/nvim-dap-python',
+        ft = 'python',
+        requires = {'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui'},
+        config = function()
+            local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+            require("dap-python").setup(path)
+        end
+    }
 end)
