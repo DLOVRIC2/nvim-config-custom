@@ -1,3 +1,8 @@
+-- TO RUN THIS FILE DO THE FOLLOWING:
+-- :so
+-- :PackerSync
+
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -140,4 +145,17 @@ return require('packer').startup(function(use)
             require("dap-python").setup(path)
         end
     }
+
+    -- Jupyter notebook in nvim 
+    -- The UpdateRmotePlugins is actually not ran on startup, so make sure to run that command before you can use it.
+    -- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+
+    -- Image support (also for jupyter notebooks)
+    -- use {'edluffy/hologram.nvim'}
+
+
+    -- Something that if not installed its causing an error:
+    use { "nvim-neotest/nvim-nio" }
+
+
 end)
