@@ -2,7 +2,10 @@
 vim.g.mapleader = " "
 
 -- Map '<leader>e' to open the command line window in normal mode
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- Ever since I added the nvim-tree this has been replaced.
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+local api = require("nvim-tree.api")
+vim.keymap.set("n", "<leader>e", api.tree.toggle)
 
 -- Move a block of text down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
