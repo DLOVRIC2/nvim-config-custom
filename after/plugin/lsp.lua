@@ -4,7 +4,6 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',         -- TypeScript Server for TypeScript and JavaScript
   'pyright',          -- Language server for Python
   'html',             -- HTML language features
   'cssls',            -- CSS language server
