@@ -12,6 +12,9 @@ claudecode.setup({
     -- Log level
     log_level = "info",
 
+    -- Custom terminal command with --dangerously-skip-permissions flag
+    terminal_cmd = "claude --dangerously-skip-permissions",
+
     -- Terminal configuration
     terminal = {
         split_side = "right",
@@ -29,8 +32,14 @@ claudecode.setup({
 
 -- Keymaps for Claude Code (using <leader>c* prefix)
 
--- Toggle Claude terminal
+-- Toggle Claude terminal (opens and focuses Claude)
 vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude" })
+
+-- Open Claude without stealing focus
+vim.keymap.set("n", "<leader>co", function()
+    vim.cmd("ClaudeCode")
+    vim.cmd("wincmd p") -- Return to previous window
+end, { desc = "Open Claude (no focus)" })
 
 -- Focus Claude terminal
 vim.keymap.set("n", "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", { desc = "Focus Claude" })
@@ -49,3 +58,10 @@ vim.keymap.set("n", "<leader>ca", "<cmd>ClaudeCodeAcceptDiff<cr>", { desc = "Acc
 
 -- Deny/reject diff proposed by Claude
 vim.keymap.set("n", "<leader>cd", "<cmd>ClaudeCodeDenyDiff<cr>", { desc = "Deny Claude Diff" })
+
+-- Terminal mode keybindings for easier navigation
+-- Press Escape in terminal mode to go back to editor
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n><C-w>h", { desc = "Exit terminal and return to editor" })
+
+-- Alternative: Ctrl+h to quickly move back to editor from terminal
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move to editor from terminal" })
