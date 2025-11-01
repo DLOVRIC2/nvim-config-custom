@@ -9,7 +9,7 @@ local function on_attach(bufnr)
   api.config.mappings.default_on_attach(bufnr)
 
   -- Custom mappings
-  vim.keymap.set('n', '<leader>e', api.tree.toggle, opts('Toggle'))
+  vim.keymap.set('n', '<leader>e', api.tree.toggle, opts('Toggle')) -- Toggle the tree
 end
 
 require("nvim-tree").setup({
@@ -17,13 +17,17 @@ require("nvim-tree").setup({
     sorter = "case_sensitive",
   },
   view = {
-    width = 30,
+    width = 60,
   },
   renderer = {
     group_empty = true,
   },
   filters = {
     dotfiles = false,
+    custom = {},
+  },
+  git = {
+      ignore=false,
   },
   sync_root_with_cwd = true,
   respect_buf_cwd = true,

@@ -5,7 +5,7 @@
 vim.opt.nu = true
 
 -- Enables relative line numbers (line number relative to the cursor line)
-vim.opt.relativenumber = true
+vim.opt.relativenumber = true 
 
 -- Sets the number of spaces a tab counts for
 vim.opt.tabstop = 4

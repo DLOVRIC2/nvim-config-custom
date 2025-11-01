@@ -77,7 +77,7 @@ return require('packer').startup(function(use)
 	-- LSP setup
 	use {
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v1.x',
+		branch = 'v3.x',
 		requires = {
 			-- LSP Support
 			{'neovim/nvim-lspconfig'},
@@ -164,6 +164,12 @@ return require('packer').startup(function(use)
       requires = {
         'nvim-tree/nvim-web-devicons', -- optional
       },
+    }
+
+    -- Claude Code integration
+    use {
+        'coder/claudecode.nvim',
+        requires = { 'folke/snacks.nvim' }
     }
 
 

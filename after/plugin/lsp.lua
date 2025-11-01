@@ -1,47 +1,9 @@
+local lsp_zero = require('lsp-zero')
 
-local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'pyright',          -- Language server for Python
-  'html',             -- HTML language features
-  'cssls',            -- CSS language server
-  'jdtls',            -- Java language server
-})
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
-
-
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
-})
-
-lsp.on_attach(function(client, bufnr)
+-- Configure keybindings to be set when LSP attaches to a buffer
+lsp_zero.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
+
   -- 'gd' in normal mode: Go to the definition of the symbol under the cursor.
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 
@@ -73,8 +35,56 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-lsp.setup()
+-- Setup Mason (LSP installer)
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'pyright',          -- Language server for Python
+    'ts_ls',            -- TypeScript/JavaScript language server
+    'html',             -- HTML language features
+    'cssls',            -- CSS language server
+  },
+  handlers = {
+    -- Default handler for all servers
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  }
+})
 
+-- Setup nvim-cmp (autocompletion)
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+    {name = 'buffer'},
+    {name = 'path'},
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+})
+
+-- Diagnostic configuration
 vim.diagnostic.config({
-    virtual_text = true
+  virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = 'E',
+      [vim.diagnostic.severity.WARN] = 'W',
+      [vim.diagnostic.severity.HINT] = 'H',
+      [vim.diagnostic.severity.INFO] = 'I',
+    },
+  },
 })

@@ -19,19 +19,19 @@ end
 -- DAP Keymaps in Normal mode
 
 -- Toggle a breakpoint at the current line
-vim.keymap.set("n", "<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { silent = true, desc = "Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { silent = true, desc = "Toggle Breakpoint" })
 
 -- Start or continue the debug session
-vim.keymap.set("n", "<leader>c", "<cmd>lua require'dap'.continue()<CR>", { silent = true, desc = "Continue" })
+vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", { silent = true, desc = "Continue" })
 
 -- Step over a function or a line of code; executes it without stepping into it
-vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.step_over()<CR>", { silent = true, desc = "Step Over" })
+vim.keymap.set("n", "<leader>dn", "<cmd>lua require'dap'.step_over()<CR>", { silent = true, desc = "Step Over" })
 
 -- Step into a function or the next line of code; if a function is on the current line, it goes inside it
 vim.keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.step_into()<CR>", { silent = true, desc = "Step Into" })
 
 -- Step out of the current function scope
-vim.keymap.set("n", "<leader>dso", "<cmd>lua require'dap'.step_out()<CR>", { silent = true, desc = "Step Out" })
+vim.keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_out()<CR>", { silent = true, desc = "Step Out" })
 
 -- Open the DAP REPL (Read-Eval-Print Loop); an interactive debugging console
 vim.keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.open()<CR>", { silent = true, desc = "Open REPL" })
