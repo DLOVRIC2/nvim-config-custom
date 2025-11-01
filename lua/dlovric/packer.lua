@@ -172,5 +172,19 @@ return require('packer').startup(function(use)
         requires = { 'folke/snacks.nvim' }
     }
 
+    -- Markdown preview with glow (floating window)
+    use {
+        'ellisonleao/glow.nvim',
+        config = function()
+            require('glow').setup()
+        end
+    }
+
+    -- Markdown rendering in-buffer
+    use {
+        'MeanderingProgrammer/render-markdown.nvim',
+        requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    }
+
 
 end)
