@@ -45,6 +45,22 @@ return require('packer').startup(function(use)
 	-- Git
 	use 'tpope/vim-fugitive'
 
+    -- Neogit - modern Git UI
+    use {
+        'NeogitOrg/neogit',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'sindrets/diffview.nvim',
+            'nvim-telescope/telescope.nvim',
+        },
+    }
+
+    -- Gitsigns - git decorations and inline actions
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+    }
+
     -- FML hahah
     use 'eandrju/cellular-automaton.nvim'
 
