@@ -202,5 +202,12 @@ return require('packer').startup(function(use)
         requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     }
 
+    -- Markdown preview with Mermaid diagram support (browser-based)
+    use {
+        'iamcco/markdown-preview.nvim',
+        run = 'cd app && npm install',
+        ft = 'markdown',
+    }
+
 
 end)
