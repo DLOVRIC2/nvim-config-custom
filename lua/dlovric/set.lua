@@ -60,3 +60,8 @@ vim.opt.updatetime = 50
 
 -- Sets a column for text alignment and wrapping (commonly used for code style enforcement)
 vim.opt.colorcolumn = "120"
+
+-- Start a server for neovim-remote (allows lazygit to open files in this instance)
+if vim.fn.serverlist()[1] == nil then
+    vim.fn.serverstart('/tmp/nvim-server-' .. vim.fn.getpid() .. '.pipe')
+end

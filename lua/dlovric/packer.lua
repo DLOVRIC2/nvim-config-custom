@@ -61,6 +61,12 @@ return require('packer').startup(function(use)
         requires = { 'nvim-lua/plenary.nvim' },
     }
 
+    -- Lazygit integration
+    use {
+        'kdheepak/lazygit.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+    }
+
     -- FML hahah
     use 'eandrju/cellular-automaton.nvim'
 
@@ -180,6 +186,13 @@ return require('packer').startup(function(use)
       requires = {
         'nvim-tree/nvim-web-devicons', -- optional
       },
+    }
+
+    -- Bufferline - tab/buffer line at top
+    use {
+        'akinsho/bufferline.nvim',
+        tag = '*',
+        requires = 'nvim-tree/nvim-web-devicons',
     }
 
     -- Claude Code integration
