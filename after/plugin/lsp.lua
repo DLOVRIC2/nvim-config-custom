@@ -76,9 +76,9 @@ cmp.setup({
   },
 })
 
--- Diagnostic configuration
+-- Diagnostic configuration (virtual_text hidden by default)
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = false,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = 'E',
@@ -88,3 +88,10 @@ vim.diagnostic.config({
     },
   },
 })
+
+-- Toggle inline diagnostics
+local diagnostics_visible = false
+vim.keymap.set('n', '<leader>td', function()
+  diagnostics_visible = not diagnostics_visible
+  vim.diagnostic.config({ virtual_text = diagnostics_visible })
+end, { desc = 'Toggle inline diagnostics' })

@@ -8,8 +8,6 @@ local function on_attach(bufnr)
   -- Default mappings
   api.config.mappings.default_on_attach(bufnr)
 
-  -- Custom mappings
-  vim.keymap.set('n', '<leader>e', api.tree.toggle, opts('Toggle')) -- Toggle the tree
 end
 
 require("nvim-tree").setup({
@@ -37,6 +35,11 @@ require("nvim-tree").setup({
   },
   on_attach = on_attach,
 })
+
+-- Global keymaps (work from any buffer)
+local api = require('nvim-tree.api')
+vim.keymap.set('n', '<leader>e', api.tree.focus, { desc = 'Focus file tree' })
+vim.keymap.set('n', '<leader>E', api.tree.toggle, { desc = 'Toggle file tree' })
 
 -- Autocommand to open nvim-tree when starting Neovim with a directory
 vim.api.nvim_create_autocmd("VimEnter", {
